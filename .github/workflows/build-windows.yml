@@ -11,7 +11,7 @@ jobs:
     runs-on: windows-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Install Rust toolchain
         uses: dtolnay/rust-toolchain@stable
@@ -20,7 +20,7 @@ jobs:
         run: cargo build --release -p deckcraft
 
       - name: Upload Windows Executable
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: dhyan-ppt-viewer-windows
           path: target/release/deckcraft.exe
