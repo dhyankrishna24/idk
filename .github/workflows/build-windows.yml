@@ -1,0 +1,26 @@
+name: Build Windows Application
+
+on:
+  push:
+    branches: [main, master]
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build Dhyan PPT Viewer (Windows)
+    runs-on: windows-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Build Dhyan PPT Viewer
+        run: cargo build --release -p deckcraft
+
+      - name: Upload Windows Executable
+        uses: actions/upload-artifact@v4
+        with:
+          name: dhyan-ppt-viewer-windows
+          path: target/release/deckcraft.exe
